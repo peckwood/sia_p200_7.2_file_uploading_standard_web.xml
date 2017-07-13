@@ -36,9 +36,4 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		//handle them itself.
 		configurer.enable();
 	}
-	
-	@Bean
-	public MultipartResolver multipartResolver(){
-		return new StandardServletMultipartResolver();
-	}
 }

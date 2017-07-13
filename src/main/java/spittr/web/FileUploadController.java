@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.FilterRegistration;
+import javax.servlet.http.Part;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,16 +32,17 @@ public class FileUploadController {
 	}
 
 	@RequestMapping(method = POST)
-	public String processRegistration(@RequestPart("profilePicture") MultipartFile profilePicture, String firstName)
+	public String processRegistration(@RequestPart("profilePicture") Part profilePicture, String firstName)
 			throws IllegalStateException, IOException {
-		System.out.println("fistName: " + firstName);
-		System.out.println("profilePicture.isEmpty() " + profilePicture.isEmpty());
-		System.out.println("profilePicture.getName(): " + profilePicture.getName());
-		System.out.println("profilePicture.getOriginalFilename() " + profilePicture.getOriginalFilename());
-		System.out.println("profilePicture.getContentType(): " + profilePicture.getContentType());
-		System.out.println("profilePicture.getSize() " + profilePicture.getSize());
-		System.out.println("profilePicture.getBytes(): " + profilePicture.getBytes());
-		profilePicture.transferTo(new File("D:/d/data/temp/profile_picture/" + profilePicture.getOriginalFilename()));
+		System.out.println("profilePicture.getName(): "+profilePicture.getName());
+		System.out.println("profilePicture.getSize(): "+profilePicture.getSize());
+		System.out.println("profilePicture.getContentType(): "+profilePicture.getContentType());
+		for(String headerName:profilePicture.getHeaderNames()){
+			System.out.println("header "+headerName+": "+profilePicture.getHeader(headerName));
+		}
+		//seems to be bugged
+		System.out.println("profilePicture.getSubmittedFileName(): "+profilePicture.getSubmittedFileName());
+		profilePicture.write("D:/d/data/temp/profile_picture/" + profilePicture.getSubmittedFileName());
 		return "successfully_uploaded_check_terminal";
 	}
 
