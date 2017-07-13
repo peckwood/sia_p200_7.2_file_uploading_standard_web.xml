@@ -40,9 +40,7 @@ public class FileUploadController {
 		for(String headerName:profilePicture.getHeaderNames()){
 			System.out.println("header "+headerName+": "+profilePicture.getHeader(headerName));
 		}
-		//seems to be bugged
-		System.out.println("profilePicture.getSubmittedFileName(): "+profilePicture.getSubmittedFileName());
-		profilePicture.write("D:/d/data/temp/profile_picture/" + profilePicture.getSubmittedFileName());
+		profilePicture.write("D:/d/data/temp/profile_picture/" + "part_picture.jpg");
 		return "successfully_uploaded_check_terminal";
 	}
 

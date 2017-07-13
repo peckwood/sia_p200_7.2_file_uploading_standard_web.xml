@@ -20,4 +20,4 @@ This project only works on Servlet 3.0 supported servers because only Servlet 3.
 
 
 
-<u>profilePicture.getSubmittedFileName() doesn't seem to work</u>
+<u>profilePicture.getSubmittedFileName() doesn't seem to work</u>, it seems to be for the reason that it is Servlet 3.1 only and I used it on a Servlet 3.0 container. 
