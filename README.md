@@ -1,6 +1,6 @@
 ### File Uploading using <u>Standard</u>ServletMultipartResolver, configured with <u>web.xml</u>
 
-#### Significant configuration files:
+#### Notable configuration files:
 
 - ~~spittr.config.SpittrWebAppInitializer~~
 - /main/webapp/WEB-INF/web.xml
@@ -18,13 +18,9 @@
 
 This project only works on Servlet 3.0 supported servers because only Servlet 3.0 webapp xsd's <servlet> tags contain <multipart-config> tags. Or just that StandardServletMultipartResolver is supported after Servlet 3.0
 
-
-
 <u>profilePicture.getSubmittedFileName() doesn't seem to work</u>, it seems to be for the reason that it is Servlet 3.1 only and I used it on a Servlet 3.0 container. 
 
-
-
-Steps
+### Steps
 
 1. project
 
@@ -65,8 +61,8 @@ Steps
 
 4. Controller
 
-5. accept the file with method parameter `@RequestPart("form_filed_name") Part local_method_variable_name`
+   1. accept the file with method parameter `@RequestPart("form_filed_name") Part local_method_variable_name`
 
-6. use `local_method_variable_name.write(file_path)`, to move it
+5. use `local_method_variable_name.write(file_path)`, to move it
 
    1. if file_path is relative, the file will be written relative to the temporary upload location
